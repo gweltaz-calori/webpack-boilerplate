@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev webpack-dev-server --config build/config.js --hot --inline",
+    "dev": "NODE_ENV=dev webpack-dev-server --config build/config.js --open --hot",
     "build": "webpack --config build/config.js"
   },
   "author": "",
@@ -21,7 +21,12 @@
     "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
+    "vue-loader": "^13.0.4",
+    "vue-template-compiler": "^2.4.2",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "vue": "^2.4.2"
   }
 }
