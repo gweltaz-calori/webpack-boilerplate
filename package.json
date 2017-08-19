@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev webpack-dev-server --config build/config.js --hot --inline",
+    "dev": "SET NODE_ENV=dev&& webpack-dev-server --config build/config.js --hot --inline",
     "build": "webpack --config build/config.js"
   },
   "author": "",
