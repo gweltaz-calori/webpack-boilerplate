@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "SET NODE_ENV=dev&& webpack-dev-server --config build/config.js --hot --inline",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --config build/config.js --hot --inline",
     "build": "webpack --config build/config.js"
   },
   "author": "",
@@ -14,6 +14,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
+    "cross-env": "^5.0.5",
     "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
