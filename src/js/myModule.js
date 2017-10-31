@@ -7,4 +7,17 @@ export default class MyModule {
     sayHello() {
         console.log('hello')
     }
+
+    async sayHelloAsync() {
+        await this.resolveAfter2Second();
+        console.log('Hello new world');
+    }
+
+    resolveAfter2Second() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+            }, 2000)
+        })
+    }
 }
