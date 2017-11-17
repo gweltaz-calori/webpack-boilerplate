@@ -1,4 +1,4 @@
-import './assets/css/compiled.scss'
+import './assets/css/style.css'
 import MyModule from './js/myModule'
 
 

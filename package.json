@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server --config build/config.js --hot --inline",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --config build/config.js --hot --open --inline --progress",
     "build": "webpack --config build/config.js"
   },
   "author": "",
@@ -15,7 +15,10 @@
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^3.0.0",
@@ -27,9 +30,9 @@
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "uglifyjs-webpack-plugin": "^0.4.6",
+    "uglifyjs-webpack-plugin": "^1.0.1",
     "url-loader": "^0.5.9",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }
