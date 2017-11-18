@@ -21,7 +21,7 @@ export default class MyModule {
             }
 
         }
-        req.open('GET', '/static/someData.json', true);
+        req.open('GET', './static/someData.json', true);
         req.send(null);
 
     }
