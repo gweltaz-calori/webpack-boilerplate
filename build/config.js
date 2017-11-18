@@ -4,6 +4,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const express = require('express')
 
 const DEV = process.env.NODE_ENV == "dev";
 
@@ -51,6 +53,14 @@ if(!DEV) {
             comments: false,
         },
     }))
+
+    plugins.push(new CopyWebpackPlugin([
+        {
+            from: path.resolve(__dirname, '../static'),
+            to: path.resolve(__dirname,'../dist/static'),
+            ignore: ['.*']
+        }
+    ]))
 
     cssLoaders.push({
         loader: 'postcss-loader',
@@ -132,6 +142,9 @@ const config = {
         watchContentBase : true,
         compress: true,
         port: 9000,
+        setup : function (app) {
+            app.use('/static', express.static(path.resolve(__dirname,'../static')));
+        }
     }
 }
 
