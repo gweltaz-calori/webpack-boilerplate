@@ -19,11 +19,11 @@ const cssLoaders = [
 const plugins = [
     new ExtractTextPlugin({
         filename : 'assets/css/style.css',
-        //disable : DEV
+        disable : DEV
     }),
 
     new HtmlWebpackPlugin({
-        template: path.resolve(__dirname,'../src/index.html'),
+        template: path.resolve(__dirname,'../public/index.html'),
         inject: true,
         filename: 'index.html',
         hash: true,
@@ -121,9 +121,14 @@ const config = {
 
         ]
     },
+    resolve : {
+        alias : {
+            '@' : path.resolve('src')
+        }
+    },
     plugins,
     devServer: {
-        contentBase: path.resolve(__dirname,'../src'),
+        contentBase: path.resolve(__dirname,'../public'),
         watchContentBase : true,
         compress: true,
         port: 9000,

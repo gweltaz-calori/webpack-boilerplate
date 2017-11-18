@@ -5,7 +5,7 @@ export default class MyModule {
     }
 
     sayHello() {
-        console.log('hello')
+        console.log('ah')
     }
 
     async sayHelloAsync() {
