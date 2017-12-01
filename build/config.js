@@ -150,7 +150,7 @@ const config = {
         watchContentBase : true,
         quiet : true,
         compress: true,
-        setup : function (app) {
+        before : function (app) {
             app.use('/static', express.static(path.resolve(__dirname,'../static')));
         }
     }
