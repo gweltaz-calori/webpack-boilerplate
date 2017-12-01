@@ -7,6 +7,7 @@ const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const express = require('express');
 const portfinder = require('portfinder');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 const DEV = process.env.NODE_ENV === "dev";
 
@@ -147,6 +148,7 @@ const config = {
     devServer: {
         contentBase: path.resolve(__dirname,'../public'),
         watchContentBase : true,
+        quiet : true,
         compress: true,
         setup : function (app) {
             app.use('/static', express.static(path.resolve(__dirname,'../static')));
@@ -164,6 +166,14 @@ module.exports = new Promise((resolve, reject) => {
             reject(err)
         } else {
             config.devServer.port = port;
+
+            // Add FriendlyErrorsPlugin
+            config.plugins.push(new FriendlyErrorsPlugin({
+                compilationSuccessInfo: {
+                    messages: [`Your application is running here: http://localhost:${port}`],
+                }
+            }));
+
             resolve(config);
         }
     });
