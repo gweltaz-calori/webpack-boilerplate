@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const express = require('express');
+const portfinder = require('portfinder');
 
 const DEV = process.env.NODE_ENV === "dev";
 
@@ -78,6 +79,9 @@ if(!DEV) {
 
 }
 
+
+
+
 const config = {
     entry: ['babel-polyfill','./src/index.js'],
     output,
@@ -144,7 +148,6 @@ const config = {
         contentBase: path.resolve(__dirname,'../public'),
         watchContentBase : true,
         compress: true,
-        port: 9000,
         setup : function (app) {
             app.use('/static', express.static(path.resolve(__dirname,'../static')));
         }
@@ -152,5 +155,16 @@ const config = {
 };
 
 
+module.exports = new Promise((resolve, reject) => {
 
-module.exports = config;
+    // Get available port for dev server
+    portfinder.basePort = 9000;
+    portfinder.getPort((err, port) => {
+        if (err) {
+            reject(err)
+        } else {
+            config.devServer.port = port;
+            resolve(config);
+        }
+    });
+});
