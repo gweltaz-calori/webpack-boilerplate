@@ -5,7 +5,7 @@ export default class MyModule {
     }
 
     sayHello() {
-        console.log('ah')
+        console.log('Hello');
     }
 
     async sayHelloAsync() {
@@ -20,7 +20,7 @@ export default class MyModule {
                 console.log(JSON.parse(req.responseText))
             }
 
-        }
+        };
         req.open('GET', './static/someData.json', true);
         req.send(null);
 

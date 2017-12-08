@@ -2,12 +2,14 @@ const webpack = require('webpack');
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const express = require('express')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const express = require('express');
+const portfinder = require('portfinder');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
-const DEV = process.env.NODE_ENV == "dev";
+const DEV = process.env.NODE_ENV === "dev";
 
 const cssLoaders = [
     {
@@ -16,8 +18,15 @@ const cssLoaders = [
             minimize: true,
         }
     },
-]
+];
 
+// Files output
+const output = {
+    path: path.resolve(__dirname, '../dist/'),
+    filename: 'assets/js/main.js',
+};
+
+// Base plugins
 const plugins = [
     new ExtractTextPlugin({
         filename : 'assets/css/style.css',
@@ -37,13 +46,9 @@ const plugins = [
 
     }),
 
-]
+];
 
-const output = {
-    path: path.resolve(__dirname, '../dist/'),
-    filename: 'assets/js/main.js',
-}
-
+// Build additional plugins
 if(!DEV) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -52,7 +57,7 @@ if(!DEV) {
         output: {
             comments: false,
         },
-    }))
+    }));
 
     plugins.push(new CopyWebpackPlugin([
         {
@@ -60,7 +65,7 @@ if(!DEV) {
             to: path.resolve(__dirname,'../dist/static'),
             ignore: ['.*']
         }
-    ]))
+    ]));
 
     cssLoaders.push({
         loader: 'postcss-loader',
@@ -69,11 +74,14 @@ if(!DEV) {
                 return [autoprefixer('last 10 versions','Firefox >= 18','ie 10')]
             }
         },
-    })
+    });
 
     output.publicPath = './'
 
 }
+
+
+
 
 const config = {
     entry: ['babel-polyfill','./src/index.js'],
@@ -140,14 +148,33 @@ const config = {
     devServer: {
         contentBase: path.resolve(__dirname,'../public'),
         watchContentBase : true,
+        quiet : true,
         compress: true,
-        port: 9000,
-        setup : function (app) {
+        before : function (app) {
             app.use('/static', express.static(path.resolve(__dirname,'../static')));
         }
     }
-}
+};
 
 
+module.exports = new Promise((resolve, reject) => {
 
-module.exports = config
+    // Get available port for dev server
+    portfinder.basePort = 9000;
+    portfinder.getPort((err, port) => {
+        if (err) {
+            reject(err)
+        } else {
+            config.devServer.port = port;
+
+            // Add FriendlyErrorsPlugin
+            config.plugins.push(new FriendlyErrorsPlugin({
+                compilationSuccessInfo: {
+                    messages: [`Your application is running here: http://localhost:${port}`],
+                }
+            }));
+
+            resolve(config);
+        }
+    });
+});
