@@ -118,7 +118,7 @@ const config = {
                         options: {
                             name: 'assets/images/[name].[ext]',
                             limit: 8192,
-                            publicPath : '../../'
+                            
                         }
                     }
                 ]
