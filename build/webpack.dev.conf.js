@@ -1,6 +1,31 @@
+const webpack = require('webpack');
 const portfinder = require('portfinder');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const merge = require('webpack-merge');
+const express = require('express');
+const path = require('path');
+
 const baseConfig = require('./webpack.base.conf');
+
+
+let config = merge(baseConfig, {
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        hot: true,
+        inline: true,
+        open: true,
+        overlay: true,
+        contentBase: path.resolve(__dirname, '../public'),
+        watchContentBase: true,
+        quiet: true,
+        compress: true,
+        before: function (app) {
+            app.use('/static', express.static(path.resolve(__dirname, '../static')));
+        }
+    }
+});
 
 
 module.exports = new Promise((resolve, reject) => {
@@ -11,16 +36,16 @@ module.exports = new Promise((resolve, reject) => {
         if (err) {
             reject(err)
         } else {
-            baseConfig.devServer.port = port;
+            config.devServer.port = port;
 
             // Add FriendlyErrorsPlugin
-            baseConfig.plugins.push(new FriendlyErrorsPlugin({
+            config.plugins.push(new FriendlyErrorsPlugin({
                 compilationSuccessInfo: {
                     messages: [`Your application is running here: http://localhost:${port}`],
                 }
             }));
 
-            resolve(baseConfig);
+            resolve(config);
         }
     });
 });

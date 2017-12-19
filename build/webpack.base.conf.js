@@ -1,6 +1,5 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const express = require('express');
 const htmlConfig = require('./html.conf');
 const autoprefixer = require('autoprefixer');
 
@@ -91,15 +90,6 @@ const config = {
     resolve: {
         alias: {
             '@': path.resolve('src')
-        }
-    },
-    devServer: {
-        contentBase: path.resolve(__dirname, '../public'),
-        watchContentBase: true,
-        quiet: true,
-        compress: true,
-        before: function (app) {
-            app.use('/static', express.static(path.resolve(__dirname, '../static')));
         }
     }
 };
