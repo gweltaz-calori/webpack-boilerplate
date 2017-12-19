@@ -1,14 +1,14 @@
 {
   "name": "webpackboilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Webpack 3 boilerplate for quickly build up application",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --config build/webpack.dev.conf.js",
     "build": "webpack --config build/webpack.build.conf.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Gweltaz Calori",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.26.0",
