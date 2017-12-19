@@ -10,7 +10,8 @@ const baseConfig = require('./webpack.base.conf');
 
 let config = merge(baseConfig, {
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ],
     devServer: {
         hot: true,
