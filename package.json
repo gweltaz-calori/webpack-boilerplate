@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server --config build/config.js --hot --open --inline",
-    "build": "webpack --config build/config.js"
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --config build/webpack.dev.conf.js --hot --open --inline",
+    "build": "webpack --config build/webpack.build.conf.js"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +36,7 @@
     "uglifyjs-webpack-plugin": "^1.0.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "webpack-dev-server": "^2.9.4",
+    "webpack-merge": "^4.1.1"
   }
 }
