@@ -5,13 +5,13 @@
 
 ## Installation
 
-### Without npm
+#### Without npm
 
 ``` bash
 git clone https://github.com/gweltaz-calori/webpack-boilerplate.git my-project
 ```
 
-### With npm
+#### With npm
 
 A CLI is currently under development, for the moment it only download the boilerplate but will have for features in the future (see [webpack-boilerplate-cli](https://github.com/RomainFrancony/webpack-boilerplate-cli) for more information)
 
@@ -35,7 +35,7 @@ npm run dev # Launch server in developement with Hot Reload
 npm run build # Build everything for production
 ```
 
-# Features
+## Features
 
 * Babel
 * Url Loader
