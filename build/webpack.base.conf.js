@@ -10,10 +10,9 @@ let plugins = [
     new ExtractTextPlugin({
         filename: 'assets/css/style.css',
         disable: DEV
-    })
+    }),
+    ...htmlConfig
 ];
-plugins = plugins.concat(htmlConfig);
-
 
 // Base config
 const config = {

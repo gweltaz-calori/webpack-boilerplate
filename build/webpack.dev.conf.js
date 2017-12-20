@@ -40,11 +40,7 @@ module.exports = new Promise((resolve, reject) => {
             config.devServer.port = port;
 
             // Add FriendlyErrorsPlugin
-            config.plugins.push(new FriendlyErrorsPlugin({
-                compilationSuccessInfo: {
-                    messages: [`Your application is running here: http://localhost:${port}`],
-                }
-            }));
+            config.plugins.push(new FriendlyErrorsPlugin());
 
             resolve(config);
         }
