@@ -19,7 +19,7 @@ const config = files.map((x) => {
         hash: true,
         minify: {
             removeComments: true,
-            collapseWhitespace: true,
+            collapseWhitespace: false,
             removeAttributeQuotes: true
         },
     })

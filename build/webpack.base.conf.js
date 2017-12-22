@@ -4,15 +4,8 @@ const htmlConfig = require('./html.conf');
 const autoprefixer = require('autoprefixer');
 
 const DEV = process.env.NODE_ENV === "dev";
+const pwaConfig = require('./pwa.conf');
 
-// Base plugins
-let plugins = [
-    new ExtractTextPlugin({
-        filename: 'assets/css/style.css',
-        disable: DEV
-    }),
-    ...htmlConfig
-];
 
 // Base config
 const config = {
@@ -21,7 +14,14 @@ const config = {
         path: path.resolve(__dirname, '../dist/'),
         filename: 'assets/js/main.js',
     },
-    plugins: plugins,
+    plugins: [
+        new ExtractTextPlugin({
+            filename: 'assets/css/style.css',
+            disable: DEV
+        }),
+        ...htmlConfig,
+        ...pwaConfig,
+    ],
     module: {
         rules: [
             {
