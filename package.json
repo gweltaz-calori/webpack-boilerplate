@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --config build/webpack.dev.conf.js",
-    "build": "node build/buid.js"
+    "build": "cross-env NODE_ENV=prod node build/build.js"
   },
   "author": "Gweltaz Calori",
   "license": "MIT",
