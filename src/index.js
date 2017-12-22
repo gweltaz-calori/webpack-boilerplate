@@ -1,4 +1,4 @@
-import './assets/css/style.css';
+import './assets/styles/style.css';
 import MyModule from './js/myModule';
 
 
