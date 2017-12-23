@@ -1,4 +1,4 @@
-// Define your environnement variables here
+// Define your environment variables here
 module.exports = {
 	//all your dev urls
     dev: {
