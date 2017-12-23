@@ -21,7 +21,8 @@ const config = merge(baseConfig, {
                 to: path.resolve(__dirname, '../dist/static'),
                 ignore: ['.*']
             }
-        ])
+        ]),
+        
     ]
 });
 

@@ -2,9 +2,12 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const htmlConfig = require('./html.conf');
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 const DEV = process.env.NODE_ENV === "dev";
 const pwaConfig = require('./pwa.conf');
+const envConfig = require('./env.conf')
+
 
 
 // Base config
@@ -19,6 +22,7 @@ const config = {
             filename: 'assets/css/style.css',
             disable: DEV
         }),
+        new webpack.DefinePlugin(envConfig),
         ...htmlConfig,
         ...pwaConfig,
     ],
@@ -65,7 +69,7 @@ const config = {
                         options: {
                             name: 'assets/images/[name].[ext]',
                             limit: 8192,
-                            publicPath: '../../'
+                            
                         }
                     }
                 ]
@@ -78,7 +82,7 @@ const config = {
                         options: {
                             name: 'assets/fonts/[name].[ext]',
                             limit: 8192,
-                            publicPath: '../../'
+                            
                         }
                     }
                 ]
