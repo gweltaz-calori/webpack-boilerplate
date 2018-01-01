@@ -3,11 +3,12 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const htmlConfig = require('./html.conf');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
+const NullPlugin = require('webpack-null-plugin');
 
 const DEV = process.env.NODE_ENV === "dev";
 const pwaConfig = require('./pwa.conf');
-const envConfig = require('./env.conf')
-
+const envConfig = require('./env.conf');
+const offlinePlugin = require('./service-worker.conf');
 
 
 // Base config
@@ -25,6 +26,7 @@ const config = {
         new webpack.DefinePlugin(envConfig),
         ...htmlConfig,
         ...pwaConfig,
+        offlinePlugin ? offlinePlugin : new NullPlugin(),
     ],
     module: {
         rules: [
