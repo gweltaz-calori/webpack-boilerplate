@@ -82,6 +82,8 @@ module.exports = {
 
 More information can be found on the [plugin documentation](https://github.com/NekR/offline-plugin)
 
+You can also see a simple PWA example made with this boilerplate [here](https://github.com/RomainFrancony/webpack-boilerplate-pwa-example)
+
 ---
 
 #### Add your environment variables
