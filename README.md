@@ -41,7 +41,7 @@ npm run build # Build everything for production
 
 Edit ```/config/pwa.js``` with your infos
 
-``` javascript
+```javascript
 module.exports = {
     name: 'Webpack Boilerplate',
     // Short human-readable name for the application (<12 chars)
@@ -61,11 +61,34 @@ module.exports = {
 };
 ```
 
+---
+
+#### Add PWA offline support
+
+Edit ```/config/service-worker.js``` with your config
+
+```javascript
+module.exports = {
+    enable: true,                        // Enable service worker cache management
+    caches: 'all',                       // Files cached
+    responseStrategy: 'network-first',   // Either use cache or network file first ('cache-first' | 'network-first')
+    cache_static_file: true,             // Cache static files (if you only want some of them, turn to false and add
+                                         // them in the externals property)
+    externals: [                         // External file to cache (ex: fonts)
+        'https://fonts.googleapis.com/css?family=Work+Sans:100,400',
+    ]
+};
+```
+
+More information can be found on the [plugin documentation](https://github.com/NekR/offline-plugin)
+
+---
+
 #### Add your environment variables
 
 Edit ```/config/env.js``` with your env variables
 
-``` javascript
+```javascript
 // Define your environment variables here
 module.exports = {
 	//all your dev urls
@@ -78,6 +101,8 @@ module.exports = {
     }
 };
 ```
+
+---
 
 * Babel
 * Url Loader
