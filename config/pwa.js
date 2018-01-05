@@ -1,6 +1,4 @@
 // Favicon and progressive web app manifest
-// For the moment it only work with one html file (I will update when the feature will be done on the plugins),
-// meanwhile copy the head tag in every html file on the build
 
 module.exports = {
     name: 'Webpack Boilerplate',

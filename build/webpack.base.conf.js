@@ -9,13 +9,14 @@ const DEV = process.env.NODE_ENV === "dev";
 const pwaConfig = require('./pwa.conf');
 const envConfig = require('./env.conf');
 const offlinePlugin = require('./service-worker.conf');
+const globalConfig = require('../config/index');
 
 
 // Base config
 const config = {
     entry: ['babel-polyfill', './src/index.js'],
     output: {
-        path: path.resolve(__dirname, '../dist/'),
+        path: globalConfig.build_dist,
         filename: 'assets/js/main.js',
     },
     plugins: [
@@ -71,7 +72,6 @@ const config = {
                         options: {
                             name: 'assets/images/[name].[ext]',
                             limit: 8192,
-                            
                         }
                     }
                 ]
@@ -84,7 +84,6 @@ const config = {
                         options: {
                             name: 'assets/fonts/[name].[ext]',
                             limit: 8192,
-                            
                         }
                     }
                 ]
