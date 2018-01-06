@@ -5,7 +5,6 @@ const fs = require('fs');
 const chalk = require('chalk');
 
 const userConfig = require('../config/pwa');
-const DEV = process.env.NODE_ENV === "dev";
 
 if (fs.existsSync(path.join(__dirname, '../' + userConfig.icons.src))) {
     module.exports = [
@@ -27,7 +26,7 @@ if (fs.existsSync(path.join(__dirname, '../' + userConfig.icons.src))) {
         }),
         new FaviconsWebpackPlugin({
             logo: path.join(__dirname, '../' + userConfig.icons.src),
-            prefix: DEV ? null : 'assets/icons/', // url doesn't  work during dev
+            prefix: 'assets/icons/',
             inject: true,
             title: userConfig.name,
             background: userConfig.background_color,

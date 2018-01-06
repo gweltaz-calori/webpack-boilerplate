@@ -20,7 +20,7 @@ const config = files.map((x) => {
         minify: {
             removeComments: true,
             collapseWhitespace: false,
-            removeAttributeQuotes: true
+            removeAttributeQuotes: false
         },
     })
 });

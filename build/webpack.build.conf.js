@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 const baseConfig = require('./webpack.base.conf');
+const globalConfig = require('../config/index');
 
 const config = merge(baseConfig, {
     plugins: [
@@ -17,13 +18,14 @@ const config = merge(baseConfig, {
         }),
         new CopyWebpackPlugin([
             {
-                from: path.resolve(__dirname, '../static'),
-                to: path.resolve(__dirname, '../dist/static'),
+                from: path.join(__dirname, '../static'),
+                to: path.join(globalConfig.build_dist, '/static'),
                 ignore: ['.*']
             }
         ]),
         
     ]
 });
+
 
 module.exports = config;

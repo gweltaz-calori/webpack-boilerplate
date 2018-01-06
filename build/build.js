@@ -4,11 +4,12 @@ const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const buildConfig = require('./webpack.build.conf');
+const globalConfig = require('../config/index');
 
 const spinner = ora('building for production...');
 spinner.start();
 
-rm(path.join(__dirname, '../dist'), (err) => {
+rm(globalConfig.build_dist, (err) => {
     if (err) {
         throw err;
     }
