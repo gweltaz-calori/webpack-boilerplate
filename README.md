@@ -1,6 +1,6 @@
 # webpack-boilerplate
 
-> Webpack 3 boilerplate for quickly build up application
+> Webpack 4 boilerplate for quickly build up application
 
 
 ## Installation

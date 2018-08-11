@@ -8,21 +8,21 @@ let files = fs.readdirSync(src);
 
 // Keep only html file
 files = files.filter((x) => {
-    return path.extname(x) === '.html';
+  return path.extname(x) === '.html';
 });
 
 const config = files.map((x) => {
-    return new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../public/' + x),
-        inject: true,
-        filename: x,
-        hash: true,
-        minify: {
-            removeComments: true,
-            collapseWhitespace: false,
-            removeAttributeQuotes: false
-        },
-    })
+  return new HtmlWebpackPlugin({
+    template: path.resolve(__dirname, '../public/' + x),
+    inject: true,
+    filename: x,
+    hash: true,
+    minify: {
+      removeComments: true,
+      collapseWhitespace: false,
+      removeAttributeQuotes: false
+    },
+  });
 });
 
 module.exports = config;

@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "autoprefixer": [
+      "last 10 versions",
+      "Firefox >= 18",
+      "ie 10"
+    ]
+  }
+}
