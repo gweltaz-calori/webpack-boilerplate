@@ -1,9 +1,8 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const htmlConfig = require('./html.conf');
-const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const NullPlugin = require('webpack-null-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const DEV = process.env.NODE_ENV === 'dev';
 const pwaConfig = require('./pwa.conf');
@@ -20,9 +19,9 @@ const config = {
     filename: 'assets/js/main.js',
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: 'assets/css/style.css',
-      disable: DEV
+    new MiniCssExtractPlugin({
+      filename: DEV ? 'assets/css/[name].css' : 'assets/css/[name].[hash].css',
+      chunkFilename: DEV ? 'assets/css/[id].css' : 'assets/css/[id].[hash].css',
     }),
     new webpack.DefinePlugin(envConfig),
     ...htmlConfig,
@@ -40,32 +39,13 @@ const config = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(s)?css$|\.sass$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true,
-              },
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                minimize: true,
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins() {
-                  return [autoprefixer('last 10 versions', 'Firefox >= 18', 'ie 10')];
-                },
-              },
-            },
-          ],
-        })
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,

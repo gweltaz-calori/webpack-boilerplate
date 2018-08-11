@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const baseConfig = require('./webpack.base.conf');
 const globalConfig = require('../config/index');
@@ -18,10 +19,6 @@ const config = merge(baseConfig, {
     ]),
   ],
   optimization: {
-    splitChunks: {
-      name: 'vendor',
-      minChunks: 2,
-    },
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
@@ -33,6 +30,7 @@ const config = merge(baseConfig, {
           },
         },
       }),
+      new OptimizeCSSAssetsPlugin({}),
     ],
   },
 });
