@@ -29,6 +29,9 @@ const config = {
         ...pwaConfig,
         offlinePlugin ? offlinePlugin : new NullPlugin(),
     ],
+    optimization: {
+        namedModules: true,
+    },
     module: {
         rules: [
             {

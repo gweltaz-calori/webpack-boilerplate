@@ -1,21 +1,14 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const baseConfig = require('./webpack.base.conf');
 const globalConfig = require('../config/index');
 
 const config = merge(baseConfig, {
+    mode: 'production',
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-            },
-            output: {
-                comments: false,
-            },
-        }),
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, '../static'),
@@ -23,8 +16,25 @@ const config = merge(baseConfig, {
                 ignore: ['.*']
             }
         ]),
-        
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            name: 'vendor',
+            minChunks: 2,
+        },
+        minimizer: [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    compress: {
+                        warnings: false,
+                    },
+                    output: {
+                        comments: false,
+                    },
+                },
+            }),
+        ],
+    },
 });
 
 
