@@ -5,7 +5,7 @@ module.exports = {
   // Short human-readable name for the application (<12 chars)
   short_name: 'Boilerplate',
   // General description of what the web application does.
-  description: 'Webpack 3 boilerplate for quickly build up application',
+  description: 'Webpack 4 boilerplate for quickly build up application',
   // Background color displayed while the css is loading
   background_color: '#009688',
   theme_color: '#009688',
