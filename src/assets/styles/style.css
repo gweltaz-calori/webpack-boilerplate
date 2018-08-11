@@ -1,47 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:100,400');
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html,body {
-	margin: 0;
-    padding: 0;
-	height: 100%;
-	width: 100%;
-    font-family: 'Work Sans', sans-serif;
-    color: #fff;
-    background-color: #009688;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Work Sans', sans-serif;
+  color: #FFFFFF;
+  background-color: #009688;
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-img{
-    width: 80px;
-    height: auto;
+img {
+  width: 80px;
+  height: auto;
 }
 
-h1{
-    font-size: 50px;
-    font-weight: 100;
-    margin: 25px 0;
+h1 {
+  font-size: 50px;
+  font-weight: 100;
+  margin: 25px 0;
 }
 
-h2{
-    color: #d6d6d6;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 400;
-    margin: 0 0 50px 0;
+h2 {
+  color: #D6D6D6;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0 0 50px 0;
 }
 
-a{
-    color: inherit;
-    font-size: 18px;
+a {
+  color: inherit;
+  font-size: 18px;
 }
